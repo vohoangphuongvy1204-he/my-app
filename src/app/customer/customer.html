@@ -1,0 +1,41 @@
+<table border="1" width="100%" style="border-collapse: collapse; margin-top: 10px;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="padding: 6px; text-align: center;">Id</th>
+      <th style="padding: 6px; text-align: center;">Name</th>
+      <th style="padding: 6px; text-align: center;">Email</th>
+      <th style="padding: 6px; text-align: center;">Age</th>
+      <th style="padding: 6px; text-align: center;">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Vòng lặp 1: Duyệt các nhóm (VIP, Normal) -->
+    <ng-container *ngFor="let customerType of customerTypes">
+      
+      <!-- Hàng hiển thị tên nhóm -->
+      <tr>
+        <td colspan="5" style="font-weight: bold; background-color: #e9ecef; padding: 8px;">
+          {{ customerType.CustomerTypeId }} - {{ customerType.CustomerTypeName }}
+        </td>
+      </tr>
+
+      <!-- Vòng lặp 2: Duyệt từng khách hàng trong nhóm -->
+      <tr *ngFor="let customer of customerType.Customers">
+        <td style="padding: 6px; text-align: center;">{{ customer.Id }}</td>
+        <td style="padding: 6px;">{{ customer.Name }}</td>
+        <td style="padding: 6px;">{{ customer.Email }}</td>
+        <td style="padding: 6px; text-align: center;">{{ customer.Age }}</td>
+        <td style="padding: 4px; text-align: center;">
+          <img 
+            [src]="customer.Image" 
+            [alt]="customer.Name" 
+            width="80" 
+            height="80"
+            style="object-fit: cover;"
+          >
+        </td>
+      </tr>
+
+    </ng-container>
+  </tbody>
+</table>

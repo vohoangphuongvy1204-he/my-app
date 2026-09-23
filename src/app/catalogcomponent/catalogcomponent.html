@@ -1,0 +1,46 @@
+<div style="padding: 15px;">
+  <!-- Bảng tiêu đề danh mục -->
+  <table border="1" style="border-collapse: collapse; width: 350px; margin-bottom: 5px;">
+    <thead>
+      <tr>
+        <th style="width: 50%; padding: 4px;">Ma Danh Muc</th>
+        <th style="width: 50%; padding: 4px;">Ten Danh Muc</th>
+      </tr>
+    </thead>
+  </table>
+
+  <!-- Vòng lặp 1: Duyệt qua từng danh mục -->
+  <div *ngFor="let cate of categories" style="margin-bottom: 15px;">
+    
+    <!-- Tên danh mục hiện tại -->
+    <table border="1" style="border-collapse: collapse; width: 350px; margin-bottom: 5px;">
+      <tr>
+        <td style="width: 50%; padding: 4px;">{{ cate.Cateid }}</td>
+        <td style="width: 50%; padding: 4px;">{{ cate.CateName }}</td>
+      </tr>
+    </table>
+
+    <!-- Vòng lặp 2: Duyệt qua các sản phẩm trong cate.Products -->
+    <table border="1" style="border-collapse: collapse; width: 350px; text-align: left;">
+      <thead>
+        <tr>
+          <th style="padding: 4px;">Ma San Pham</th>
+          <th style="padding: 4px;">Ten San Pham</th>
+          <th style="padding: 4px;">Gia San Pham</th>
+          <th style="padding: 4px;">Picture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of cate.Products">
+          <td style="padding: 6px;">{{ p.ProductId }}</td>
+          <td style="padding: 6px;">{{ p.ProductName }}</td>
+          <td style="padding: 6px;">{{ p.Price }}</td>
+          <td style="padding: 4px; text-align: center;">
+            <img [src]="p.Image" [alt]="p.ProductName" width="50" height="60" style="object-fit: contain;">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
